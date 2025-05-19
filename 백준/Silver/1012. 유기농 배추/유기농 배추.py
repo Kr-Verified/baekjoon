@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(5000)
+sys.setrecursionlimit(3000)
 visited = [[False for _ in range(51)] for _ in range(51)]
 field = [[0 for _ in range(51)] for _ in range(51)]
 def dfs(x, y):
