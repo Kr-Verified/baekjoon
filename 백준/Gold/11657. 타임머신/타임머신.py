@@ -7,12 +7,16 @@ for _ in range(m):
 def ball():
   min_time[1] = 0
   for i in range(n):
+    update = False
     for route in range(1, n+1):
       for vertex, time in cities[route]:
         if min_time[route]!=float('inf') and min_time[route]+time<min_time[vertex]:
           if i==n-1:
             return True
           min_time[vertex]=min_time[route]+time
+          update = True
+    if not update:
+      break
   return False
 if ball():
   print(-1)
