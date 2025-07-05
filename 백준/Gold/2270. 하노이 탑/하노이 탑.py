@@ -21,10 +21,10 @@ def hanoi(n, col):
 result = 0
 lis = []
 n = int(input())
-cols = list(map(int, input().split()))
-powers = [1]*(n+1)
+a, b, c = map(int, input().split())
+powers = [1]
 for i in range(1, n+1):
-  powers[i] = (powers[i-1]*2)%1000000
+  powers.append((powers[i-1]*2)%1000000)
 for i in range(3):
     lis.append(deque(map(int, input().split())))
 for i in range(3):
