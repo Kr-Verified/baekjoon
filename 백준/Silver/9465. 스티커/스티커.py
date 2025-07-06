@@ -1,8 +1,6 @@
 for _ in range(int(input())):
   n = int(input())
-  sticker = []
-  sticker.append(list(map(int, input().split())))
-  sticker.append(list(map(int, input().split())))
+  sticker = [list(map(int, input().split())) for _ in range(2)]
   scores = [[0 for _ in range(n+1)] for _ in range(2)]
   scores[0][1], scores[1][1] = sticker[0][0], sticker[1][0]
   for i in range(2, n+1):
