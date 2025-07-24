@@ -34,8 +34,8 @@ int main() {
   int *parents = (int*)malloc(sizeof(int) * (N+1));
   int *ranks = (int*)malloc(sizeof(int) * (N+1));
   int *pInfo = (int*)malloc(sizeof(int) * (N+1));
-  int *answer = (int*)malloc(sizeof(int) * N);
-  Query *queries = (Query*)malloc(sizeof(Query) * (Q+N));
+  int *answer = (int*)malloc(sizeof(int) * Q);
+  Query *queries = (Query*)malloc(sizeof(Query) * (Q+N-1));
   for (int i = 2; i <= N; i++) {
     scanf("%d", &pInfo[i]);
     parents[i] = i;
@@ -59,7 +59,9 @@ int main() {
   for (int i = Q+N-2; i >= 0; i--) {
     Query temp = queries[i];
     if (temp.type == 0) {
-      merge(ranks, parents, temp.a, pInfo[temp.a]);
+      if (find(parents, temp.a) != find(parents, pInfo[temp.a])) {
+        merge(ranks, parents, temp.a, pInfo[temp.a]);
+      }
     }else {
       if (find(parents, temp.a) == find(parents, temp.b)) {
         answer[cnt++] = 1;
