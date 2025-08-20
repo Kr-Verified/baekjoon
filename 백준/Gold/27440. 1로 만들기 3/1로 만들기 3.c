@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define HASH_SIZE 2000000
+#define HASH_SIZE 100000
 
 typedef struct {
   long long key;
