@@ -7,7 +7,7 @@ typedef struct {
 } HashNode;
 
 HashNode visited[HASH_SIZE];
-long long int queue[1000000][2];
+long long int queue[100000][2];
 
 void mark_visited(long long x) {
   int h = (x % HASH_SIZE + HASH_SIZE) % HASH_SIZE;
