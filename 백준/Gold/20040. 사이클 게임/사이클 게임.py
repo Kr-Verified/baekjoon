@@ -1,0 +1,31 @@
+import sys
+sys.setrecursionlimit(10**7)
+input = sys.stdin.readline
+
+def find(x):
+  if parent[x] < 0:
+    return x
+  parent[x] = find(parent[x])
+  return parent[x]
+
+def union(x, y):
+  x_root = find(x)
+  y_root = find(y)
+  if x_root == y_root:
+    return
+  if parent[x_root] < parent[y_root]:
+    parent[x_root] += parent[y_root]
+    parent[y_root] = x_root
+  else:
+    parent[y_root] += parent[x_root]
+    parent[x_root] = y_root
+
+n, m = map(int, input().split())
+parent = [-1] * (n + 1)
+for i in range(m):
+  a, b = map(int, input().split())
+  if find(a) == find(b):
+    print(i+1)
+    exit()
+  union(a, b)
+print(0)
