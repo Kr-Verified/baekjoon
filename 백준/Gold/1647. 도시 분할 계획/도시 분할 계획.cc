@@ -16,7 +16,7 @@ int find(int x, vector<int>& parent) {
   return parent[x] = find(parent[x], parent);
 }
 
-int union_(int x, int y, vector<int>& parent) {
+bool union_(int x, int y, vector<int>& parent) {
   int root_x = find(x, parent);
   int root_y = find(y, parent);
   if (root_x == root_y) return false;
@@ -45,6 +45,7 @@ int kruskal(int n, priority_queue<Edge>& pq, vector<int>& parent) {
 
 int main() {
   int n, m;
+  ios::sync_with_stdio(false);
   cin >> n >> m;
   priority_queue<Edge> pq;
   vector<int> parent(n+1, -1);
